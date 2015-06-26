@@ -1,4 +1,9 @@
-define(['./lerp', './norm'], function(lerp, norm){
+define(['./lerp', './clamp'], function(lerp, clamp){
+    function norm(val, min, max) {
+        val = clamp(val, min, max);
+        return val === max ? 1 : (val - min) / (max - min);
+    };
+    
     /**
     * Maps a number from one scale to another.
     * @example map(3, 0, 4, -1, 1) -> 0.5
